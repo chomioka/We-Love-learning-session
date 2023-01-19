@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="todolist.css" />
+</head>
+<body>
+  <script src="style.js"></script>
+<div id="container">
+<div id="header">
+<h1>WE <span id="love">LOVE</span> LEARNING SESSION!!</h1>
+</div>
+
+<div id="nav">
+<ul>
+	<li><a href="home.html">HOME</a></li>
+	<li class="active"><a href="todolist.html">TO DO LIST</a></li>
+	<li><a href="question.html">QUESTION</a></li>
+</ul>
+</div>
+
+<br style="clear:both">
+<div id="main">
+<h2>TO DO LIST</h2>
+<div class="container">
+  <div id="newtask">
+    <input type="text" placeholder="Enter Name and Task">
+    <button id="push">Add</button>
+  </div>
+  <div id="tasks"></div>
+</div>
+
+ <script>
+
+   document.querySelector('#push').onclick = 
+     function() {
+       if(document.querySelector('#newtask input').
+       value.length == 0){
+         alert("Please Enter a Task");
+       }
+       else{
+         document.querySelector('#tasks').innerHTML
+         +=`<div class="task">
+         <span id="textname">
+         ${document.querySelector('#newtask input').value}
+         </span>
+         <button class="delete">X</button>
+         </div>`;
+
+         var current_tasks = document.
+           querySelectorAll('.delete');
+
+         for(var i = 0; i < current_tasks.length; i++){
+           current_tasks[i].onclick = function (){
+             this.parentNode.remove();
+           }
+         }
+
+         var tasks = document.
+           querySelectorAll('#taskname');
+
+         for (var i = 0; i < tasks.length; i++){
+           tasks[i].onclick = function (){
+             this.classList.toggle('completed');
+           }
+         } 
+
+         document.querySelector('#newtask input')
+           .value = "";
+       }
+     }
+ </script> 
+
+
+
+  
+  
+</div>
+</div> 
+</body>
+
+</html>
